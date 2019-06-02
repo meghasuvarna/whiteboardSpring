@@ -1,14 +1,15 @@
 package com.example.myapp.models;
 
-enum Type {
-    Heading, List, Paragraph, Image, YouTube, HTML;
-}
-
-enum DataType {
-    Integer, String, Date, Boolean;
-}
 public class Widget {
     public Widget() {
+    }
+
+    public enum Type {
+        Heading, List, Paragraph, Image, YouTube, HTML;
+    }
+
+    public enum DataType {
+        Integer, String, Date, Boolean;
     }
 
     public Widget(int id, Type type, String name, int order, String text, String url, int size, int width, int height,
@@ -30,17 +31,34 @@ public class Widget {
 
     }
 
-    int id;
-    String name;
-    int order;
-    String text;
-    String url;
-    int size;
-    int width;
-    int height;
-    String cssClass;
-    String style;
-    String value;
+    private int id;
+    private String name;
+    private int order;
+    private String text;
+    private String url;
+    private int size;
+    private int width;
+    private int height;
+    private String cssClass;
+    private String style;
+    private String value;
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public DataType getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(DataType dataType) {
+        this.dataType = dataType;
+    }
+
     Type type;
     DataType dataType;
 
