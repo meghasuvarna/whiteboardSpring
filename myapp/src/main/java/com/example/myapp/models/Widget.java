@@ -1,6 +1,16 @@
 package com.example.myapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+
+@Entity
 public class Widget {
+
+    @ManyToOne()
+    @JsonIgnore
+    private Topic topic;
+
     public Widget() {
     }
 
@@ -17,7 +27,7 @@ public class Widget {
         super();
         this.id = id;
         this.name = name;
-        this.order = order;
+        this.sequenceNum = order;
         this.text = text;
         this.url = url;
         this.size = size;
@@ -31,9 +41,11 @@ public class Widget {
 
     }
 
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private int order;
+    private int sequenceNum;
     private String text;
     private String url;
     private int size;
@@ -42,6 +54,14 @@ public class Widget {
     private String cssClass;
     private String style;
     private String value;
+
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
 
     public Type getType() {
         return type;
@@ -118,12 +138,12 @@ public class Widget {
         return this.id;
     }
 
-    public int getOrder() {
-        return order;
+    public int getSequenceNum() {
+        return sequenceNum;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setSequenceNum(int sequenceNum) {
+        this.sequenceNum = sequenceNum;
     }
 
     public int getSize() {
